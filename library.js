@@ -29,8 +29,16 @@ var library = {
 // p01: Coding Music - 2 tracks
 // p02: Other Playlist - 1 tracks
 
-var printPlaylists = function () {
 
+var printPlaylists = function () {
+  for (var playlist in library.playlists) {
+    if (library.playlists.hasOwnProperty(playlist)) {
+      var playlistId = library.playlists[playlist].id;
+      var playlistName = library.playlists[playlist].name;
+      var playlistTracks = library.playlists[playlist].tracks.length;
+      console.log(playlistId + ": " + playlistName + " - " + playlistTracks + " tracks");
+    }
+  }
 }
 
 
@@ -40,7 +48,15 @@ var printPlaylists = function () {
 // t03: Four Thirty-Three by John Cage (Woodstock 1952)
 
 var printTracks = function () {
-
+  for (var track in library.tracks) {
+    if (library.tracks.hasOwnProperty(track)) {
+      var trackId = library.tracks[track].id;
+      var trackName = library.tracks[track].name;
+      var trackArtist = library.tracks[track].artist;
+      var trackAlbum = library.tracks[track].album;
+      console.log(trackId + ": " + trackName + " by " + trackArtist + " (" + trackAlbum + ")");
+    }
+  }
 }
 
 
@@ -50,7 +66,17 @@ var printTracks = function () {
 // t02: Model View Controller by James Dempsey (WWDC 2003)
 
 var printPlaylist = function (playlistId) {
+  var playlistName = library['playlists'][playlistId]['name'];
+  var playlistTracks = library['playlists'][playlistId]['tracks'].length;
+  console.log(playlistId + ": " + playlistName + " - " + playlistTracks + " tracks");
 
+  var tracks = library['playlists'][playlistId]['tracks'];
+  tracks.forEach(function(track) {
+    var trackName = library['tracks'][track]['name'];
+    var trackArtist = library['tracks'][track]['artist'];
+    var trackAlbum = library['tracks'][track]['album'];
+    console.log(track + ": " + trackName + " by " + trackArtist + " (" + trackAlbum + ")");
+  });
 }
 
 
@@ -86,7 +112,7 @@ var addPlaylist = function (name) {
 // STRETCH:
 // given a query string string, prints a list of tracks
 // where the name, artist or album contains the query string (case insensitive)
-// tip: use "string".search("tri") 
+// tip: use "string".search("tri")
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/search
 
 var printSearchResults = function(query) {
