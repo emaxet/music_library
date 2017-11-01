@@ -85,7 +85,6 @@ var printPlaylist = function (playlistId) {
 var addTrackToPlaylist = function (trackId, playlistId) {
   library['playlists'][playlistId]['tracks'].push(trackId);
   console.log(library['playlists'][playlistId]['tracks']);
-
 }
 
 
@@ -96,19 +95,29 @@ var uid = function() {
   return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
 }
 
-
 // adds a track to the library
 
 var addTrack = function (name, artist, album) {
-
+  var trackId = uid();
+  library['tracks'][trackId] = {
+    'id': trackId,
+    'name': name,
+    'artist': artist,
+    'album': album
+  }
 }
-
 
 // adds a playlist to the library
 
 var addPlaylist = function (name) {
-
+  var playlistId = uid();
+  library['playlists'][playlistId] = {
+    id: playlistId,
+    'name': name,
+    tracks: ""
+  }
 }
+
 
 
 // STRETCH:
