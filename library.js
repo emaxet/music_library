@@ -83,6 +83,8 @@ var printPlaylist = function (playlistId) {
 // adds an existing track to an existing playlist
 
 var addTrackToPlaylist = function (trackId, playlistId) {
+  library['playlists'][playlistId]['tracks'].push(trackId);
+  console.log(library['playlists'][playlistId]['tracks']);
 
 }
 
